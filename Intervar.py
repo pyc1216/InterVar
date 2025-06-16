@@ -1386,7 +1386,7 @@ def check_BS2(line,Freqs_flgs,Allels_flgs,Funcanno_flgs):
     cls=line.split('\t')
     keys=cls[Allels_flgs['Chr']]+"_"+cls[Allels_flgs['Start']]+"_"+cls[Allels_flgs['End']]+"_"+cls[Allels_flgs['Ref']]+"_"+cls[Allels_flgs['Alt']]
     try:
-        mim1=mim2gene_dict[ cls[Funcanno_flgs['Gene.ensGene']] ]
+        mim1=mim2gene_dict2[ cls[Funcanno_flgs['Gene.ensGene']] ] # Gene.ensGene Not storing ensemble gene numbers, but gene symbols
         try:
             if mim_adultonset_dict[mim1] == "1": # means adult oneset disorder
                 BS2=0;
