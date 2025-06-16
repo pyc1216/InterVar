@@ -1,5 +1,5 @@
-# singularity image files 
-./*.sif
+# singularity/docker image files 
+./image
 # annovar download human-database
 ./humandb
 
