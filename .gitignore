@@ -1,3 +1,10 @@
+# singularity image files 
+./*.sif
+# annovar download human-database
+./humandb
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
