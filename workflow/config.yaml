@@ -1,0 +1,2 @@
+singularity:
+    annovar: image/annovar.sif
