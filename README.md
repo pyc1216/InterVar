@@ -4,6 +4,68 @@ The original repository  was not updated after August 31, 2021.
 # New features
 - For ease of use, the workflow is managed by snakemake and executed within singularity containers as the runtime environment.
 
+# Install
+## 1. Install Miniconda
+
+```bash
+# Download and install Miniconda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda3
+
+# Initialize conda
+source $HOME/miniconda3/bin/activate
+conda init bash  # Then reopen terminal or run: source ~/.bashrc
+    
+# Creat conda environment
+conda create -n intervar_env -c conda-forge python=3.8 snakemake=5.4.5 git -y
+```
+## 2. Install singularity
+
+### Method 1: Package Manager (Recommended for Ubuntu/Debian)
+```bash
+sudo apt-get update
+sudo apt-get install -y singularity-container
+```
+### Method 2: From Source (For other Linux distributions)
+```bash
+# Install dependencies
+sudo apt-get install -y \
+    build-essential \
+    libseccomp-dev \
+    libglib2.0-dev \
+    pkg-config \
+    squashfs-tools \
+    cryptsetup \
+    wget
+
+# Download and install Go (required)
+wget https://go.dev/dl/go1.21.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.21.4.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+source ~/.bashrc
+
+# Install Singularity
+VERSION=3.11.4
+wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-ce-${VERSION}.tar.gz
+tar -xzf singularity-ce-${VERSION}.tar.gz
+cd singularity-ce-${VERSION}
+./mconfig
+make -C builddir
+sudo make -C builddir install
+```
+### Build image
+`singularity build image/annovar.sif def/annovar.def`
+
+# Usage
+## Download annovar database
+`snakemake -s workflow/main.smk --configfile workflow/config.yaml --use-singularity --singularity-args " --bind $HOME:$HOME" download_all`
+## Run example
+`snakemake -s workflow/main.smk --configfile workflow/config.yaml --use-singularity --singularity-args " --bind $HOME:$HOME" run_example_all`
+
+
+# *Original README*
+***
 # InterVar
 A bioinformatics software tool for clinical interpretation of genetic variants by the ACMG-AMP 2015 guidelines
 
