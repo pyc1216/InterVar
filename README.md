@@ -1,3 +1,9 @@
+**Note**: This is a community-maintained fork of [WGLab/InterVar](https://github.com/WGLab/InterVar). 
+The original repository  was not updated after August 31, 2021.
+
+# New features
+- For ease of use, the workflow is managed by snakemake and executed within singularity containers as the runtime environment.
+
 # InterVar
 A bioinformatics software tool for clinical interpretation of genetic variants by the ACMG-AMP 2015 guidelines
 
