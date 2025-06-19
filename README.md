@@ -55,13 +55,19 @@ make -C builddir
 sudo make -C builddir install
 ```
 ### Build image
-`singularity build image/annovar.sif def/annovar.def`
+```bash
+singularity build image/annovar.sif def/annovar.def
+```
 
 # Usage
-## Download annovar database
-`snakemake -s workflow/main.smk --configfile workflow/config.yaml --use-singularity --singularity-args " --bind $HOME:$HOME" download_all`
-## Run example
-`snakemake -s workflow/main.smk --configfile workflow/config.yaml --use-singularity --singularity-args " --bind $HOME:$HOME" run_example_all`
+## 1. Download annovar database
+```bash
+snakemake -s workflow/main.smk --configfile workflow/config.yaml --use-singularity --singularity-args " --bind $HOME:$HOME" download_all
+```
+## 2. Run example
+```bash
+snakemake -s workflow/main.smk --configfile workflow/config.yaml --use-singularity --singularity-args " --bind $HOME:$HOME" run_example_all
+```
 
 
 # *Original README*
