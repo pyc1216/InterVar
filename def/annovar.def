@@ -1,0 +1,20 @@
+Bootstrap: docker
+From: bioinfochrustrasbourg/annovar:2018Apr16
+
+%labels
+    Author pyc1216@github
+    Version v1.0.0
+    MyLabel InterVar(https://github.com/WGLab/InterVar) (ANNOVAR + wget git unzip)
+
+
+%post
+    sed -i s/mirror.centos.org/vault.centos.org/g /etc/yum.repos.d/*.repo
+    sed -i s/^#.*baseurl=http/baseurl=http/g /etc/yum.repos.d/*.repo
+    sed -i s/^mirrorlist=http/#mirrorlist=http/g /etc/yum.repos.d/*.repo
+    sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+    sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+    
+    yum install -y wget git unzip
+    
+%environment
+    export LC_ALL=C
