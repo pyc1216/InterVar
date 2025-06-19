@@ -1,7 +1,12 @@
+#
+.snakemake/
+nohup.out
+example_out/
+
 # singularity/docker image files 
-./image
+image
 # annovar download human-database
-./humandb
+humandb
 
 
 
