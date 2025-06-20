@@ -56,6 +56,7 @@ sudo make -C builddir install
 ```
 ### Build image
 ```bash
+mkdir -p image
 singularity build image/annovar.sif def/annovar.def
 ```
 
