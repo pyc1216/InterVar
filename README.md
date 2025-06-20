@@ -7,16 +7,20 @@ The original repository  was not updated after August 31, 2021.
 # Install
 ## 1. Install Miniconda
 
+
+### Download and install Miniconda
 ```bash
-# Download and install Miniconda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda3
-
-# Initialize conda
+```
+### Initialize conda
+```bash
 source $HOME/miniconda3/bin/activate
 conda init bash  # Then reopen terminal or run: source ~/.bashrc
-    
-# Creat conda environment
+```
+ 
+### Creat conda environment
+```bash
 conda create -n intervar_env -c conda-forge python=3.8 snakemake=5.4.5 git -y
 ```
 ## 2. Install singularity
